@@ -16,8 +16,6 @@ function adicionarImagemDeFilme() {
     listaDeImagensFilmes.push(document.querySelector("#filme").value)
     imagensDeFilmes.innerHTML += `<img src='${document.querySelector("#filme").value}'>`
     limparArea("#filme")
-    
-    
 }
 
 
