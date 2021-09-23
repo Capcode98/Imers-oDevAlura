@@ -77,11 +77,10 @@ function limparArea(y) {
 
 function adicionarJogador() {
     var nome1 = document.getElementById("nomejogador").value
-    var player = {nome:`${String(nome1)}`, vitorias: 0, empates: 1, derrotas: 0, pontos: 0}
+    var player = {nome:`${String(nome1)}`,vitorias: 0,empates: 0,derrotas: 0,pontos: 0}
     limparArea("#nomejogador")
-    console.log(nome1)
-    console.log(player)
     jogadores.push(player)
+    exibeJogadorNaTela()
 }
 
 var jogadores = [] 
@@ -96,23 +95,37 @@ function exibeJogadorNaTela(jogador) {
         <td>${jogadores[i].empates}</td>
         <td>${jogadores[i].derrotas}</td>
         <td>${jogadores[i].pontos}</td>
-        <td><button onClick="adicionarVitoria()">Vitória</button></td>
-        <td><button onClick="adicionarEmpate()">Empate</button></td>
-        <td><button onClick="adicionarDerrota()">Derrota</button></td>
+        <td><button onClick="adicionarVitoria(${i})">Vitória</button></td>
+        <td><button onClick="adicionarEmpate(${i})">Empate</button></td>
+        <td><button onClick="adicionarDerrota(${i})">Derrota</button></td>
         </tr>`
-
-        console.log(jogadores)
     }
     var tabelaJogadores = document.querySelector("#tabelaJogadores")
-    tabelaJogadores.innerHTML += elemento
+    tabelaJogadores.innerHTML = elemento
+}
+
+function adicionarVitoria(i) {
+    jogadores[i].vitorias += 1
+    jogadores[i].pontos = calcularPontos(i)
+    exibeJogadorNaTela()
+}
+
+function adicionarEmpate(i) {
+    jogadores[i].empates += 1
+    jogadores[i].pontos = calcularPontos(i)
+    exibeJogadorNaTela()
+}
+
+function adicionarDerrota(i) {
+    jogadores[i].derrotas += 1
+    exibeJogadorNaTela()
 }
 
 function mostrarJogador(){
     console.log(jogadores)
-    /*console.log(adicionarJogador())*/
 }
 
-function calcularPontos(jogador){
-    var pontos = jogador.vitorias * 3 + jogador.empates
+function calcularPontos(i){
+    var pontos = jogadores[i].vitorias * 3 + jogadores[i].empates
     return pontos
 }
