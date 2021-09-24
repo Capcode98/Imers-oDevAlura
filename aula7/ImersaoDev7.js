@@ -104,11 +104,11 @@ function jogar(){
     var atributoDaCartaJogador = cartaDoJogador.atributo[`${atributoSelecionado}`]
     var atributoDaCartaComputador = cartaDoComputador.atributo[`${atributoSelecionado}`]
 
-    if (atributoDaCartaJogador < atributoDaCartaComputador){
+    if (atributoDaCartaJogador > atributoDaCartaComputador){
         resultado.innerHTML = `<p> a sua carta sorteada foi: nome: ${cartaDoJogador.Nome} , força: ${cartaDoJogador.atributo["Força"]} , defesa: ${cartaDoJogador.atributo["Defesa"]} , agilidade: ${cartaDoJogador.atributo["Agilidade"]} , mana: ${cartaDoJogador.atributo["Mana"]} , inteligencia: ${cartaDoJogador.atributo["Inteligencia"]} </p>`
         resultado.innerHTML +=`<p>Voce venceu! o atributo da carta da maquina foi : ${atributoDaCartaComputador} </p>`
     }
-    else if (atributoDaCartaJogador > atributoDaCartaComputador){
+    else if (atributoDaCartaComputador > atributoDaCartaJogador ){
         resultado.innerHTML = `<p> a sua carta sorteada foi: nome: ${cartaDoJogador.Nome} , força: ${cartaDoJogador.atributo["Força"]} , defesa: ${cartaDoJogador.atributo["Defesa"]} , agilidade: ${cartaDoJogador.atributo["Agilidade"]} , mana: ${cartaDoJogador.atributo["Mana"]} , inteligencia: ${cartaDoJogador.atributo["Inteligencia"]} </p>`
         resultado.innerHTML +=`<p>Voce perdeu! o atributo da carta da maquina foi : ${atributoDaCartaComputador} </p>`
     }
